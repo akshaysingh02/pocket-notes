@@ -1,0 +1,40 @@
+.group-wrapper{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+    padding: 16px 44px;
+    cursor: pointer;
+    background-color: white;
+    transition: background-color 0.3s ease;
+    &:hover{
+        background-color: #2f2f2f19;
+    }
+    h3{
+        font-size: 24px;
+    }
+    @media screen and (min-width: 768px) {
+        h3{
+            font-size: 20px;
+        } 
+    }
+}
+
+
+.group-initials-wrapper{
+    width: 69px;
+    height: 69px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 24px;
+    font-weight: 500;
+    
+    @media screen and (min-width: 768px) {
+        width: 60px;
+        height: 60px; 
+        font-size: 20px;
+    }
+}

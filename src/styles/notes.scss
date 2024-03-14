@@ -1,0 +1,30 @@
+.right-wrapper {
+    background: #dae5f5;
+    flex-grow: 1;
+    height: 100vh;
+    max-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.empty-area {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 626px;
+    gap: 20px;
+    flex-grow: 1;
+    img{
+    }
+    p{
+        text-align: center;
+    }
+}
+.encryption-text-wrapper{
+    display: flex;
+    gap: 16px;
+    background-color: inherit;
+    padding-bottom: 16px;
+    margin: 0 auto;
+}
