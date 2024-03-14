@@ -2,8 +2,8 @@ import "../styles/GroupList.scss";
 import Group from "./Group";
 import { useModalContext } from "../Contexts/ModalContext";
 
-function GroupList({groups, selectGroup}) {
-  const {showPopup} = useModalContext()
+function GroupList({ groups, selectGroup }) {
+  const { showPopup } = useModalContext();
   return (
     <>
       <div className="left-wrapper">
@@ -11,9 +11,13 @@ function GroupList({groups, selectGroup}) {
           <h1>Pocket Notes</h1>
         </div>
         <div className="groups-container">
-          <Group groups={groups} selectGroup={selectGroup}/>
+        <ul>
+          {groups.map((group) => (
+            <Group key={group.id} group={group} selectGroup={selectGroup} />
+          ))}
+        </ul>
         </div>
-        <div className="add-group-btn" onClick={showPopup} >
+        <div className="add-group-btn" onClick={showPopup}>
           +
         </div>
       </div>

@@ -9,137 +9,53 @@ const getInitials = (name) => {
   return (firstInitial + lastInitial).toUpperCase();
 };
 
-function NotesHolder({ group }) {
+function NotesHolder({ selectedGroup, notes, setNotes }) {
   const [note, setNote] = useState("");
   const handleChange = (event) => {
     setNote(event.target.value);
   };
 
   const handleSubmit = () => {
-    // Handle submission logic here
+    const newNote = {
+      content: note,
+      date: new Date().toLocaleDateString(),
+      time: new Date().toLocaleTimeString(),
+    };
+    setNotes([...notes, newNote]);
+    setNote("");
   };
 
   return (
     <>
       <div className="notes-area">
-        <div className="notes-header" style={{ backgroundColor: "blue" }}>
+        <div className="notes-header" style={{ backgroundColor: "#001F8B" }}>
           <div
             className="group-initials_header"
-            // style={{ backgroundColor: group.color }}
+            style={{ backgroundColor: selectedGroup.color }}
           >
-            MN
+            {getInitials(selectedGroup.name)}
           </div>
-          <h3>My groups</h3>
+          <h3>{selectedGroup.name}</h3>
         </div>
 
         <div className="notes-content-wrapper">
-          <div className="notes-block">
-            <div className="notes-data">
-              <p>
-                Another productive way to use this tool to begin a daily writing
-                routine. One way is to generate a random paragraph with the
-                intention to try to rewrite it while still keeping the original
-                meaning. The purpose here is to just get the writing started so
-                that when the writer goes onto their day's writing projects,
-                words are already flowing from their fingers.
-              </p>
+          {notes.map((note, index) => (
+            <div className="notes-block" key={index}>
+              <div className="notes-data">
+                <p>{note.content}</p>
+              </div>
+              <div className="notes-creation-time">
+                <p>{note.date}</p>
+                <div className="divider" />
+                <p>{note.time}</p>
+              </div>
             </div>
-            <div className="notes-creation-time">
-              <p>9 Mar 2023</p>
-              <div className="divider" />
-              <p>10:10 AM</p>
-            </div>
-          </div>
-          <div className="notes-block">
-            <div className="notes-data">
-              <p>
-                Another productive way to use this tool to begin a daily writing
-                routine. One way is to generate a random paragraph with the
-                intention to try to rewrite it while still keeping the original
-                meaning. The purpose here is to just get the writing started so
-                that when the writer goes onto their day's writing projects,
-                words are already flowing from their fingers.
-              </p>
-            </div>
-            <div className="notes-creation-time">
-              <p>9 Mar 2023</p>
-              <div className="divider" />
-              <p>10:10 AM</p>
-            </div>
-          </div>
-          <div className="notes-block">
-            <div className="notes-data">
-              <p>
-                Another productive way to use this tool to begin a daily writing
-                routine. One way is to generate a random paragraph with the
-                intention to try to rewrite it while still keeping the original
-                meaning. The purpose here is to just get the writing started so
-                that when the writer goes onto their day's writing projects,
-                words are already flowing from their fingers.
-              </p>
-            </div>
-            <div className="notes-creation-time">
-              <p>9 Mar 2023</p>
-              <div className="divider" />
-              <p>10:10 AM</p>
-            </div>
-          </div>
-          <div className="notes-block">
-            <div className="notes-data">
-              <p>
-                Another productive way to use this tool to begin a daily writing
-                routine. One way is to generate a random paragraph with the
-                intention to try to rewrite it while still keeping the original
-                meaning. The purpose here is to just get the writing started so
-                that when the writer goes onto their day's writing projects,
-                words are already flowing from their fingers.
-              </p>
-            </div>
-            <div className="notes-creation-time">
-              <p>9 Mar 2023</p>
-              <div className="divider" />
-              <p>10:10 AM</p>
-            </div>
-          </div>
-          <div className="notes-block">
-            <div className="notes-data">
-              <p>
-                Another productive way to use this tool to begin a daily writing
-                routine. One way is to generate a random paragraph with the
-                intention to try to rewrite it while still keeping the original
-                meaning. The purpose here is to just get the writing started so
-                that when the writer goes onto their day's writing projects,
-                words are already flowing from their fingers.
-              </p>
-            </div>
-            <div className="notes-creation-time">
-              <p>9 Mar 2023</p>
-              <div className="divider" />
-              <p>10:10 AM</p>
-            </div>
-          </div>
-          <div className="notes-block">
-            <div className="notes-data">
-              <p>
-                Another productive way to use this tool to begin a daily writing
-                routine. One way is to generate a random paragraph with the
-                intention to try to rewrite it while still keeping the original
-                meaning. The purpose here is to just get the writing started so
-                that when the writer goes onto their day's writing projects,
-                words are already flowing from their fingers.
-              </p>
-            </div>
-            <div className="notes-creation-time">
-              <p>9 Mar 2023</p>
-              <div className="divider" />
-              <p>10:10 AM</p>
-            </div>
-          </div>
+          ))}
         </div>
 
         <div
           className="notes-writing-wrapper"
-          style={{ backgroundColor: "blue" }}
+          style={{ backgroundColor: "#001F8B" }}
         >
           <div className="notes-input-wrapper">
             <textarea
@@ -151,7 +67,7 @@ function NotesHolder({ group }) {
               className="notes-submit-button"
               disabled={!note.trim()}
               onClick={handleSubmit}
-              style={{ cursor: note.trim() ? 'pointer' : 'not-allowed' }}
+              style={{ cursor: note.trim() ? "pointer" : "not-allowed" }}
             >
               <img
                 src={submitIcon}

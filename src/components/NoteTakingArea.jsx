@@ -2,12 +2,15 @@ import NotesHolder from "./NotesHolder";
 import EmptyArea from "./emptyArea";
 
 
-function NoteTakingArea() {
+function NoteTakingArea({selectedGroup, notes, setNotes}) {
   return (
     <>
       <div className="right-wrapper">
-        {/* <EmptyArea /> */}
-        <NotesHolder />
+        {selectedGroup ? (
+          <NotesHolder selectedGroup={selectedGroup} notes={notes} setNotes={setNotes} />
+        ) : (
+        <EmptyArea />
+        )}
       </div>
     </>
   );

@@ -8,19 +8,17 @@ const getInitials = (name) => {
   return (firstInitial + lastInitial).toUpperCase();
 };
 
-function Group({ groups, selectGroup }) {
+function Group({ group, selectGroup }) {
   
   return (
-    <ul>
-      {groups.map((group) => (
-        <li key={group.id} onClick={()=>selectGroup(group.id)}>
-          <div className="group-wrapper">
-            <div className="group-initials-wrapper" style={{backgroundColor: group.color}} >{getInitials(group.name)}</div>
-            <h3>{group.name}</h3>
-          </div>
-        </li>
-      ))}
-    </ul>
+    <li key={group.id} onClick={() => selectGroup(group.id)}>
+      <div className="group-wrapper">
+        <div className="group-initials-wrapper" style={{ backgroundColor: group.color }}>
+          {getInitials(group.name)}
+        </div>
+        <h3>{group.name}</h3>
+      </div>
+    </li>
   );
 }
 

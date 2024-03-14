@@ -19,34 +19,57 @@ function App() {
     localStorage.setItem("groups", JSON.stringify(groups));
   }, [groups]);
 
-  // useEffect(() => {
-  //   if (selectedGroup) {
-  //     const storedNotes =
-  //       JSON.parse(localStorage.getItem(`notes_${selectedGroup}`)) || [];
-  //     setNotes(storedNotes);
-  //   }
-  // }, [selectedGroup]);
+  useEffect(() => {
+    if (selectedGroup) {
+      const storedNotes =
+        JSON.parse(localStorage.getItem(`notes_${selectedGroup}`)) || [];
+      setNotes(storedNotes);
+    }
+  }, [selectedGroup]);
 
   const addGroup = (group) => {
     const newGroup = { ...group, id: Date.now().toString() };
     setGroups([...groups, newGroup]);
     localStorage.setItem("groups", JSON.stringify([...groups, newGroup]));
+
+    setNotes([
+      ...notes,
+      {
+        content: "Thank you for choosing pocket notes",
+        date: new Date().toLocaleDateString(),
+        time: new Date().toLocaleTimeString(),
+      },
+    ]);
+    localStorage.setItem(
+      `notes_${newGroup.id}`,
+      JSON.stringify([
+        {
+          content: "Thank you for choosing pocket notes",
+          date: new Date().toLocaleDateString(),
+          time: new Date().toLocaleTimeString(),
+        },
+      ])
+    );
   };
 
-  // const selectGroup = (groupId) => {
-  //   setSelectedGroup(groupId);
-  // };
+  const selectGroup = (groupId) => {
+    setSelectedGroup(groupId);
+  };
 
+  const selectedGroupData = selectGroup
+    ? groups.find((group) => group.id === selectGroup)
+    : null;
 
   return (
     <div className="App">
       <ModalContextProvider>
-        <GroupList groups={groups}  />
+        <GroupList groups={groups} selectGroup={selectGroup} />
         <NoteTakingArea
+          selectedGroup={selectedGroupData}
           notes={notes}
           setNotes={setNotes}
         />
-        <PopupModal addGroup={addGroup}/>
+        <PopupModal addGroup={addGroup} />
       </ModalContextProvider>
     </div>
   );
