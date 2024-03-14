@@ -1,6 +1,7 @@
 import submitIcon from "../images/submit_icon.svg";
 import "../styles/NotesHolder.scss";
 import { useState } from "react";
+import { format } from "date-fns";
 
 const getInitials = (name) => {
   const words = name.trim().split(" ");
@@ -9,7 +10,7 @@ const getInitials = (name) => {
   return (firstInitial + lastInitial).toUpperCase();
 };
 
-function NotesHolder({ selectedGroup, notes, setNotes }) {
+function NotesHolder({}) {
   const [note, setNote] = useState("");
   const handleChange = (event) => {
     setNote(event.target.value);
@@ -18,39 +19,33 @@ function NotesHolder({ selectedGroup, notes, setNotes }) {
   const handleSubmit = () => {
     const newNote = {
       content: note,
-      date: new Date().toLocaleDateString(),
-      time: new Date().toLocaleTimeString(),
+      date: format(new Date(), "dd MMM yyyy"),
+      time: format(new Date(), "hh:mm a")
     };
-    setNotes([...notes, newNote]);
-    setNote("");
+    setNote("")
   };
 
   return (
     <>
       <div className="notes-area">
         <div className="notes-header" style={{ backgroundColor: "#001F8B" }}>
-          <div
-            className="group-initials_header"
-            style={{ backgroundColor: selectedGroup.color }}
-          >
-            {getInitials(selectedGroup.name)}
+          <div className="group-initials_header">
+            MN
           </div>
-          <h3>{selectedGroup.name}</h3>
+          <h3>My groups </h3>
         </div>
 
         <div className="notes-content-wrapper">
-          {notes.map((note, index) => (
-            <div className="notes-block" key={index}>
-              <div className="notes-data">
-                <p>{note.content}</p>
-              </div>
-              <div className="notes-creation-time">
-                <p>{note.date}</p>
-                <div className="divider" />
-                <p>{note.time}</p>
-              </div>
+          <div className="notes-block">
+            <div className="notes-data">
+              <p>content</p>
             </div>
-          ))}
+            <div className="notes-creation-time">
+              <p>content</p>
+              <div className="divider" />
+              <p>content</p>
+            </div>
+          </div>
         </div>
 
         <div
@@ -61,6 +56,7 @@ function NotesHolder({ selectedGroup, notes, setNotes }) {
             <textarea
               type="text"
               placeholder="Enter your text here..........."
+              value={note}
               onChange={handleChange}
             />
             <button
