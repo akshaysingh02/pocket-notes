@@ -62,58 +62,7 @@ function NotesHolder({
   return (
     <>
       {selectedGroupId && (
-        (isMobile && (
-        <div className={`right-wrapper ${sidebarVisibility ? "hidden" : ""}`}>
-          <div className="notes-header">
-            {isMobile && (
-              <div
-                className="arrow-wrapper"
-                onClick={handleClick}
-                style={{ cursor: "pointer" }}
-              >
-                <img src={backArrow} alt="" />
-              </div>
-            )}
-            <div
-              className="group-initials_header"
-              style={{ backgroundColor: selectedGroupColor }}
-            >
-              {getInitials(selectedGroupName)}
-            </div>
-            <h3>{selectedGroupName}</h3>
-          </div>
-
-          <div className="notes-content-wrapper">
-            {displayNotesForGroup(selectedGroupId)}
-          </div>
-
-          <div className="notes-writing-wrapper">
-            <div className="notes-input-wrapper">
-              <textarea
-                type="text"
-                placeholder="Enter your text here..........."
-                value={newNote}
-                onChange={handleNoteChange}
-              />
-              <button
-                className="notes-submit-button"
-                disabled={!newNote.trim()}
-                style={{ cursor: newNote.trim() ? "pointer" : "not-allowed" }}
-                onClick={handleAddNote}
-              >
-                <img
-                  src={submitIcon}
-                  alt=""
-                  style={{
-                    filter: newNote.trim() ? "none" : "grayscale(100%)",
-                  }}
-                />
-              </button>
-            </div>
-          </div>
-        </div>
-        )),
-        <div className="right-wrapper">
+        <div className={isMobile && sidebarVisibility ? "right-wrapper hidden" : "right-wrapper"}>
           <div className="notes-header">
             {isMobile && (
               <div

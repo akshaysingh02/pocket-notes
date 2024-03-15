@@ -64,7 +64,7 @@ function App() {
           sidebarVisibility={sidebarVisibility}
           setSideBarVisibility={setSideBarVisibility}
         />
-        {isMobile ? (<div className={`right-wrapper ${sidebarVisibility ? "hidden" : ""}`}>
+        <div className={isMobile && sidebarVisibility ? "right-wrapper hidden" : "right-wrapper"}>
           {selectedGroupId ? (
             <NoteTakingArea
               selectedGroupId={selectedGroupId}
@@ -77,20 +77,7 @@ function App() {
           ) : (
             <EmptyArea />
           )}
-        </div>) : (<div className="right-wrapper">
-          {selectedGroupId ? (
-            <NoteTakingArea
-              selectedGroupId={selectedGroupId}
-              onAddNote={addNoteToGroup}
-              groups={groups}
-              isMobile={isMobile}
-              sidebarVisibility={sidebarVisibility}
-              setSideBarVisibility={setSideBarVisibility}
-            />
-          ) : (
-            <EmptyArea />
-          )}
-        </div>)}
+        </div>
         <PopupModal addGroup={addGroup} />
       </ModalContextProvider>
     </div>
