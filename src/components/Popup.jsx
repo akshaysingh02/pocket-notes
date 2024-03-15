@@ -48,7 +48,7 @@ function Popup({ addGroup }) {
             onChange={handleChange}
           />
         </div>
-        {error && <p style={{color: "red",fontSize:"20px",marginTop:"-16px",margin:"0 auto"}} >{error}</p>}
+        {error && <p className="error-text" >{error}</p>}
         <div className="color-picker-wrapper">
           <p>Choose colour</p>
           <div className="color-wrapper">

@@ -13,6 +13,12 @@
     font-size: 24px;
     color: white;
     background-color: #001F8B;
+    h3{
+        font-size: 18px ;
+    }
+    @media screen and (max-width: 600px) {
+        gap: 20px;
+    }
 }
 
 .group-initials_header {
@@ -26,6 +32,11 @@
     color: white;
     font-size: 24px;
     font-weight: 500;
+    @media screen and (max-width: 600px) {
+        width: 48px;
+        height: 48px;
+        font-size: 18px;
+    }
 }
 
 .notes-content-wrapper {
@@ -48,6 +59,10 @@
     line-height: 28px;
     letter-spacing: 3.5%;
     padding-bottom: 20px;
+    @media screen and (max-width: 600px) {
+        font-size: 14px;
+        line-height: 18px;
+    }
 }
 
 .notes-creation-time {
@@ -56,6 +71,11 @@
     font-weight: 700;
     align-items: center;
     gap: 16px;
+    @media screen and (max-width: 600px) {
+        font-size: 14px;
+        font-weight: 500;
+        gap: 8px;
+    }
 }
 
 .divider {
@@ -63,6 +83,10 @@
     height: 8px;
     background-color: black;
     border-radius: 50%;
+    @media screen and (max-width: 600px) {
+        width: 4px;
+    height: 4px;
+    }
 }
 
 // input area styling
@@ -72,6 +96,9 @@
     height: 30%;
     max-height: 255px;
     background-color: #001F8B;
+    @media screen and (max-width: 600px) {
+        padding: 12px 18px;
+    }
 
 }
 
@@ -91,10 +118,16 @@
         font-size: 20px;
         &::placeholder {
             font-size: 20px;
+            @media screen and (max-width: 600px) {
+                font-size: 15px;
+            }
         }
         &:focus-visible {
             border: none;
             outline: none;
+        }
+        @media screen and (max-width: 600px) {
+            font-size: 15px;
         }
         resize: none;
     }
@@ -104,5 +137,14 @@
         background-color: inherit;
         padding: 16px;
         cursor: pointer;
+        @media screen and (max-width: 600px) {
+            padding: 8px;
+        }
+    }
+    img{
+        @media screen and (max-width: 600px) {
+            width: 21px;
+            height: 17px;
+        }
     }
 }

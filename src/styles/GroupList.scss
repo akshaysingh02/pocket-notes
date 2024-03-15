@@ -41,6 +41,11 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    @media screen and (max-width: 600px) {
+        width: 75px;
+        height: 75px;
+        font-size: 40px;
+    }
 
     box-shadow: 2px 4px 10px rgba(0, 0, 0, 0.3);
     transition: box-shadow 0.3s ease;
@@ -49,6 +54,6 @@
     }
 }
 
-li.active{
+li.active {
     background-color: rgba(0, 0, 0, 0.117);
 }

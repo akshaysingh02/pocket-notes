@@ -90,7 +90,7 @@ function NotesHolder({
             <div className="notes-input-wrapper">
               <textarea
                 type="text"
-                placeholder="Enter your text here..........."
+                placeholder="Enter your text here..."
                 value={newNote}
                 onChange={handleNoteChange}
               />
