@@ -2,12 +2,18 @@ import "../styles/GroupList.scss";
 import Group from "./Group";
 import { useModalContext } from "../Contexts/ModalContext";
 
-function GroupList({ groups, onGroupSelect, selectedGroupId }) {
+function GroupList({ groups, onGroupSelect, selectedGroupId,isMobile,sidebarVisibility,setSideBarVisibility }) {
   const { showPopup } = useModalContext();
+
+  const handleClick = (item)=>{
+    onGroupSelect(item)
+    isMobile && setSideBarVisibility(false) // this will only trigger on mobile
+    
+  }
 
   return (
     <>
-      <div className="left-wrapper">
+      <div className={`left-wrapper ${sidebarVisibility ? '' : 'hidden'}`} >
         <div className="heading-wrapper">
           <h1>Pocket Notes</h1>
         </div>
@@ -17,7 +23,7 @@ function GroupList({ groups, onGroupSelect, selectedGroupId }) {
               <li
                 key={group.id}
                 className={selectedGroupId === group.id ? "active" : ""}
-                onClick={() => onGroupSelect(group.id)}
+                onClick={()=>handleClick(group.id)}
               >
                 <Group key={group.id} group={group} />
               </li>
