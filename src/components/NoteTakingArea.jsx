@@ -1,17 +1,10 @@
 import NotesHolder from "./NotesHolder";
-import EmptyArea from "./emptyArea";
+import '../styles/notes.scss'
 
-
-function NoteTakingArea({selectedGroup,notes,setNotes}) {
+function NoteTakingArea({selectedGroupId,onAddNote,groups}) {
   return (
     <>
-      <div className="right-wrapper">
-      {selectedGroup ? (
-          <NotesHolder selectedGroup={selectedGroup} notes={notes} setNotes={setNotes}/>
-        ) : (
-          <EmptyArea />
-        )}
-      </div>
+          <NotesHolder  selectedGroupId={selectedGroupId} onAddNote={onAddNote} groups={groups} />
     </>
   );
 }

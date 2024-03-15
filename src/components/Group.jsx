@@ -11,14 +11,12 @@ const getInitials = (name) => {
 function Group({ group}) {
   
   return (
-    <li key={group.id} >
       <div className="group-wrapper">
         <div className="group-initials-wrapper" style={{ backgroundColor: group.color }}>
           {getInitials(group.name)}
         </div>
         <h3>{group.name}</h3>
       </div>
-    </li>
   );
 }
 
